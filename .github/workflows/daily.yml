@@ -6,7 +6,7 @@ on:
       # any PR to a release branch.
       - '[0-9].[0-9]'
   schedule:
-    - cron: '5,25,45 * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
 
