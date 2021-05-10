@@ -6,7 +6,7 @@ on:
       # any PR to a release branch.
       - '[0-9].[0-9]'
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '5,25,45 * * * *'
 
 jobs:
 
@@ -73,7 +73,7 @@ jobs:
 
   test-ubuntu-tls:
     runs-on: ubuntu-latest
-    if: github.repository == 'redis/redis'
+    if: github.repository == 'trevor211/redis'
     timeout-minutes: 14400
     steps:
     - uses: actions/checkout@v2
@@ -96,8 +96,8 @@ jobs:
         ./runtest-sentinel
     - name: cluster tests
       run: |
-        ./runtest-cluster --tls
-        ./runtest-cluster
+        ./runtest-cluster --tls --single 05
+        ./runtest-cluster --single 05
 
   test-valgrind:
     runs-on: ubuntu-latest
@@ -140,7 +140,7 @@ jobs:
 
   test-centos7-tls:
     runs-on: ubuntu-latest
-    if: github.repository == 'redis/redis'
+    if: github.repository == 'trevor211/redis'
     container: centos:7
     timeout-minutes: 14400
     steps:
@@ -166,8 +166,8 @@ jobs:
         ./runtest-sentinel
     - name: cluster tests
       run: |
-        ./runtest-cluster --tls
-        ./runtest-cluster
+        ./runtest-cluster --tls --single 05
+        ./runtest-cluster --single 05
 
   test-macos-latest:
     runs-on: macos-latest
