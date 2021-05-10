@@ -96,8 +96,8 @@ jobs:
         ./runtest-sentinel
     - name: cluster tests
       run: |
-        ./runtest-cluster --tls --single 05
-        ./runtest-cluster --single 05
+        ./runtest-cluster --dont-clean --tls --single 05
+        ./runtest-cluster --dont-clean --single 05
 
   test-valgrind:
     runs-on: ubuntu-latest
@@ -166,8 +166,8 @@ jobs:
         ./runtest-sentinel
     - name: cluster tests
       run: |
-        ./runtest-cluster --tls --single 05
-        ./runtest-cluster --single 05
+        ./runtest-cluster --dont-clean --tls --single 05
+        ./runtest-cluster --dont-clean --single 05
 
   test-macos-latest:
     runs-on: macos-latest

@@ -199,6 +199,10 @@ proc cleanup {} {
     }
     log_crashes
     if {$::dont_clean} {
+        foreach dir $::dirs {
+            puts "$dir log:"
+            puts [read [open $dir/log.txt]]
+        }
         return
     }
     foreach dir $::dirs {
