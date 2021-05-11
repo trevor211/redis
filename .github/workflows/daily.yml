@@ -80,22 +80,10 @@ jobs:
     - name: make
       run: |
         make BUILD_TLS=yes
-    - name: test
+    - name: cluster tests
       run: |
         sudo apt-get install tcl8.6 tcl-tls
         ./utils/gen-test-certs.sh
-        ./runtest --accurate --verbose --tls
-        ./runtest --accurate --verbose
-    - name: module api test
-      run: |
-        ./runtest-moduleapi --verbose --tls
-        ./runtest-moduleapi --verbose
-    - name: sentinel tests
-      run: |
-        ./runtest-sentinel --tls
-        ./runtest-sentinel
-    - name: cluster tests
-      run: |
         ./runtest-cluster --dont-clean --tls --single 05
         ./runtest-cluster --dont-clean --single 05
 
@@ -150,22 +138,10 @@ jobs:
         yum -y install centos-release-scl epel-release
         yum -y install devtoolset-7 openssl-devel openssl
         scl enable devtoolset-7 "make BUILD_TLS=yes"
-    - name: test
+    - name: cluster tests
       run: |
         yum -y install tcl tcltls
         ./utils/gen-test-certs.sh
-        ./runtest --accurate --verbose --tls
-        ./runtest --accurate --verbose
-    - name: module api test
-      run: |
-        ./runtest-moduleapi --verbose --tls
-        ./runtest-moduleapi --verbose
-    - name: sentinel tests
-      run: |
-        ./runtest-sentinel --tls
-        ./runtest-sentinel
-    - name: cluster tests
-      run: |
         ./runtest-cluster --dont-clean --tls --single 05
         ./runtest-cluster --dont-clean --single 05
 
